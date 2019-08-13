@@ -1,0 +1,36 @@
+buildscript {
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE")
+        classpath('io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE')
+        classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.0.0")
+    }
+    repositories {
+	    //Configurar repositorios de lo contraro toma el de mavenCentral
+    }
+}
+
+repositories {
+     //Configurar repositorios de lo contraro toma el de mavenCentral
+} 
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: "com.jfrog.artifactory"
+apply plugin: "maven"
+apply plugin: 'org.springframework.boot'
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.0.4.RELEASE')
+	compile (group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.0.4.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter:2.0.4.RELEASE')
+}
